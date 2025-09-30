@@ -25,7 +25,7 @@ A full-featured blog application built with Flask, featuring user authentication
 
 1. Clone the repository:
 ```bash
-git clone [repository-url]
+git clone https://github.com/esparzar/flaskapp.git
 cd flaskapp
 ```
 
@@ -97,4 +97,4 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Emmanuel Amponsah - esparzar535@gmail.com
 
-Project Link: [https://github.com/yourusername/flaskapp](https://github.com/yourusername/flaskapp)
+Project Link: [https://github.com/esparzar/flaskapp](https://github.com/esparzar/flaskapp)
