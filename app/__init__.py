@@ -17,9 +17,16 @@ def create_app():
     db.init_app(app)
     migrate.init_app(app, db)
     login_manager.init_app(app)
+    # Add user_loader to avoid Flask-Login exception
+    @login_manager.user_loader
+    def load_user(user_id):
+        # Dummy loader, replace with real user model when available
+        return None
     
-    # Import and register blueprints (we'll create these next)
-    from app.routes.main import main_bp
+    # Import and register blueprints
+    from app.routes import main_bp, auth_bp, blog_bp
     app.register_blueprint(main_bp)
+    app.register_blueprint(auth_bp)
+    app.register_blueprint(blog_bp)
     
     return app

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }} - Flask Blog{% endblock %}
+
+{% block content %}
+<article>
+    <h1 class="mb-4">{{ post.title }}</h1>
+    <p class="text-muted">
+        By {{ post.author.username }} on {{ post.created_at.strftime('%B %d, %Y') }}
+        {% if post.updated_at != post.created_at %}
+            <br>Updated on {{ post.updated_at.strftime('%B %d, %Y') }}
+        {% endif %}
+    </p>
+    
+    {% if current_user == post.author %}
+        <div class="mb-4">
+            <a href="{{ url_for('blog.edit', id=post.id) }}" class="btn btn-primary">Edit Post</a>
+        </div>
+    {% endif %}
+    
+    <div class="post-content">
+        {{ post.content | safe }}
+    </div>
+</article>
+
+<div class="mt-4">
+    <a href="{{ url_for('blog.index') }}" class="btn btn-secondary">Back to Posts</a>
+</div>
+{% endblock %}
