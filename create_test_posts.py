@@ -19,7 +19,7 @@ with app.app_context():
     # Create some test blog posts
     posts = [
         {
-            'title': 'Welcome to My Flask Blog',
+            'title': 'Baba News Room',
             'content': 'This is my first blog post! I\'m excited to share my thoughts and experiences with you all.',
             'created_at': datetime(2025, 9, 30, 10, 0)
         },
