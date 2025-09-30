@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}{{ user.username }}'s Profile{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <img src="{{ url_for('static', filename='avatars/' + user.avatar_url) }}" class="card-img-top" alt="{{ user.username }}'s avatar">
+            <div class="card-body">
+                <h5 class="card-title">{{ user.username }}</h5>
+                {% if user.full_name %}
+                    <h6 class="card-subtitle mb-2 text-muted">{{ user.full_name }}</h6>
+                {% endif %}
+                {% if user.bio %}
+                    <p class="card-text">{{ user.bio }}</p>
+                {% endif %}
+                <ul class="list-group list-group-flush">
+                    {% if user.location %}
+                        <li class="list-group-item"><i class="fas fa-map-marker-alt"></i> {{ user.location }}</li>
+                    {% endif %}
+                    {% if user.website %}
+                        <li class="list-group-item"><i class="fas fa-link"></i> <a href="{{ user.website }}" target="_blank">{{ user.website }}</a></li>
+                    {% endif %}
+                    <li class="list-group-item"><i class="fas fa-calendar"></i> Joined {{ user.created_at.strftime('%B %Y') }}</li>
+                </ul>
+                {% if current_user.is_authenticated and current_user.id == user.id %}
+                    <a href="{{ url_for('profile.edit_profile') }}" class="btn btn-primary mt-3">Edit Profile</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-8">
+        <h3>Recent Posts</h3>
+        {% if posts %}
+            {% for post in posts %}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ post.created_at.strftime('%B %d, %Y') }}</h6>
+                        <p class="card-text">{{ post.content[:200] }}{% if post.content|length > 200 %}...{% endif %}</p>
+                        <a href="{{ url_for('blog.view', id=post.id) }}" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="text-muted">No posts yet.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

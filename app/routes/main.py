@@ -5,7 +5,7 @@ main_bp = Blueprint('main', __name__)
 
 @main_bp.route('/')
 def index():
-    recent_posts = Blog.query.order_by(Blog.created_at.desc()).limit(5).all()
+    recent_posts = Blog.query.order_by(Blog.created_at.asc()).limit(5).all()
     print("Recent posts:", recent_posts)  # Debug print
     return render_template('index.html', recent_posts=recent_posts)
 
