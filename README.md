@@ -98,3 +98,8 @@ Distributed under the MIT License. See `LICENSE` for more information.
 Emmanuel Amponsah - esparzar535@gmail.com
 
 Project Link: [https://github.com/esparzar/flaskapp](https://github.com/esparzar/flaskapp)
+
+Clone the project:
+```bash
+gh repo clone esparzar/flaskapp
+```
