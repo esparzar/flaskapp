@@ -29,3 +29,6 @@ site.db
 # Misc
 *.bak
 *.tmp
+
+# GitHub Copilot
+.github/copilot-instructions.md
