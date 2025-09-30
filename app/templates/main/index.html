@@ -1,23 +1,22 @@
 {% extends "base.html" %}
 
-{% block title %}Home - Flask Blog{% endblock %}
+{% block title %}Home - Baba Flask Blog{% endblock %}
 
 {% block content %}
-<div class="jumbotron">
-    <h1 class="display-4">Welcome to Flask Blog</h1>
-    <p class="lead">A simple blog built with Flask</p>
-</div>
-
-<h2 class="mb-4">Recent Posts</h2>
-{% if recent_posts %}
-    <div class="row">
-        {% for post in recent_posts %}
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ post.title }}</h5>
-                        <p class="card-text">{{ post.content[:200] }}...</p>
-                        <p class="card-text"><small class="text-muted">By {{ post.author.username }} on {{ post.created_at.strftime('%B %d, %Y') }}</small></p>
+<div class="row">
+    <div class="col-md-8">
+        <h2 class="mb-4">Recent Posts</h2>
+        {% if recent_posts %}
+            {% for post in recent_posts %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">By {{ post.author.username }} on {{ post.created_at.strftime('%B %d, %Y') }}</h6>
+                    <p class="card-text">{{ post.content[:200] }}{% if post.content|length > 200 %}...{% endif %}</p>
+                    <a href="{{ url_for('blog.view', id=post.id) }}" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+            {% endfor %}
                         <a href="{{ url_for('blog.view', id=post.id) }}" class="btn btn-primary">Read More</a>
                     </div>
                 </div>
