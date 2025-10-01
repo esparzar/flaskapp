@@ -3,28 +3,29 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_migrate import Migrate
+from config import Config
 
 db = SQLAlchemy()
 migrate = Migrate()
 login_manager = LoginManager()
+login_manager.login_view = 'auth.login'
+login_manager.login_message_category = 'info'
 
 def create_app():
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = 'your-secret-key-change-this'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    app.config['UPLOAD_FOLDER'] = os.path.join(app.static_folder, 'avatars')
-    app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024  # 1MB max file size
+    app.config.from_object(Config)
     
     # Initialize extensions with app
     db.init_app(app)
     migrate.init_app(app, db)
     login_manager.init_app(app)
-    # Add user_loader to avoid Flask-Login exception
+
+    # Import User model here to avoid circular imports
+    from app.models import User
+    
     @login_manager.user_loader
     def load_user(user_id):
-        # Dummy loader, replace with real user model when available
-        return None
+        return User.query.get(int(user_id))
     
     # Import and register blueprints
     from app.routes import main_bp, auth_bp, blog_bp, profile_bp

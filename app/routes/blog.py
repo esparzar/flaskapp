@@ -7,7 +7,7 @@ from app import db
 @blog_bp.route('/blog')
 def index():
     page = request.args.get('page', 1, type=int)
-    posts = Blog.query.order_by(Blog.created_at.asc()).paginate(page=page, per_page=10)
+    posts = Blog.query.order_by(Blog.created_at.desc()).paginate(page=page, per_page=10)
     return render_template('blog/index.html', posts=posts)
 
 @blog_bp.route('/blog/create', methods=['GET', 'POST'])

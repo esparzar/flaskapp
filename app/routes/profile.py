@@ -1,6 +1,19 @@
+import os
+from flask import Blueprint, render_template, flash, redirect, url_for, request, current_app
+from flask_login import login_required, current_user
+from werkzeug.utils import secure_filename
+from app.models import User, Blog
+from app import db
+
+profile_bp = Blueprint('profile', __name__)
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in current_app.config['ALLOWED_EXTENSIONS']
+
 from flask import Blueprint, render_template, flash, redirect, url_for, request
 from flask_login import login_required, current_user
-from app.models import User
+from app.models import User, Blog
 from app import db
 
 profile_bp = Blueprint('profile', __name__)
