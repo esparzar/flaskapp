@@ -9,6 +9,7 @@ blog_bp = Blueprint('blog', __name__)
 from .main import *
 from .auth import *
 from .blog import *
+from .profile import profile_bp
 
 # This allows us to import blueprints directly from the routes package
 __all__ = ['main_bp', 'auth_bp', 'blog_bp']

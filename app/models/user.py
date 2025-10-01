@@ -10,6 +10,14 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128))
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     
+    # Profile fields
+    full_name = db.Column(db.String(120))
+    bio = db.Column(db.Text)
+    location = db.Column(db.String(120))
+    website = db.Column(db.String(200))
+    avatar_url = db.Column(db.String(200), default='default-avatar.png')
+    last_seen = db.Column(db.DateTime, default=datetime.utcnow)
+    
     # Relationship with Blog posts
     posts = db.relationship('Blog', backref='author', lazy='dynamic')
 

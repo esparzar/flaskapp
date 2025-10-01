@@ -1,14 +1,76 @@
 {% extends "base.html" %}
 
-{% block title %}About - Flask Blog{% endblock %}
+{% block title %}About Baba BlogSite{% endblock %}
 
 {% block content %}
-<h1>About Flask Blog</h1>
-<p class="lead">This is a simple blog application built with Flask.</p>
-<p>Features include:</p>
-<ul>
-    <li>User authentication</li>
-    <li>Blog post creation and management</li>
-    <li>Responsive design</li>
-</ul>
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-8">
+            <h1 class="mb-4">About Baba BlogSite</h1>
+            <p class="lead">Welcome to Baba BlogSite - A modern blogging platform built with Flask and love for the community.</p>
+            
+            <h2 class="mt-4 mb-3">Our Story</h2>
+            <p>Hi there! I'm Emmanuel Amponsah, the developer behind Baba BlogSite. This platform was created with a vision to provide a simple yet powerful blogging experience for writers and readers alike.</p>
+            
+            <h2 class="mt-4 mb-3">Features</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-user-circle"></i> User Profiles</h5>
+                    <p>Personalize your presence with custom profiles, avatars, and bios.</p>
+                </div>
+                <div class="col-md-6">
+                    <h5><i class="fas fa-edit"></i> Content Management</h5>
+                    <p>Create, edit, and manage your blog posts with ease.</p>
+                </div>
+                <div class="col-md-6">
+                    <h5><i class="fas fa-mobile-alt"></i> Responsive Design</h5>
+                    <p>Enjoy a seamless experience across all devices.</p>
+                </div>
+                <div class="col-md-6">
+                    <h5><i class="fas fa-lock"></i> Secure Authentication</h5>
+                    <p>Your account safety is our top priority.</p>
+                </div>
+            </div>
+
+            <h2 class="mt-4 mb-3">Technology Stack</h2>
+            <ul class="list-unstyled">
+                <li><i class="fab fa-python"></i> Python with Flask Framework</li>
+                <li><i class="fas fa-database"></i> SQLAlchemy ORM</li>
+                <li><i class="fab fa-bootstrap"></i> Bootstrap 5 for styling</li>
+                <li><i class="fas fa-shield-alt"></i> Flask-Login for authentication</li>
+            </ul>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Connect With Us</h3>
+                    <div class="social-links mt-3">
+                        <a href="https://github.com/esparzar" class="btn btn-outline-dark mb-2 w-100">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        <a href="mailto:esparzar535@gmail.com" class="btn btn-outline-primary mb-2 w-100">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="https://www.linkedin.com/in/emmanuel-amponsah" class="btn btn-outline-info mb-2 w-100">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </a>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h5>Project Repository</h5>
+                        <p class="small">Check out the source code and contribute:</p>
+                        <a href="https://github.com/esparzar/flaskapp" class="btn btn-dark w-100">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 {% endblock %}
